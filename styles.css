@@ -1,0 +1,215 @@
+:root {
+    --primary-bg: #FFFCAC;
+    --secondary-bg: #FFD3AC;
+    --accent: #FFACAE;
+    --text: #333333;
+    --complement: #ACD8FF;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Poetsen One", 'Monaco', 'Arial', sans-serif;
+    background-color: var(--primary-bg);
+    color: var(--text);
+    line-height: 1.6;
+}
+
+nav {
+    background-color: var(--secondary-bg);
+    padding: 1rem;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+}
+
+nav a {
+    text-decoration: none;
+    color: var(--text);
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+nav a:hover {
+    color: var(--accent);
+}
+
+.section {
+    min-height: 100vh;
+    padding: 6rem 2rem 2rem;
+}
+
+h1, h2 {
+    text-align: center;
+    margin-bottom: 2rem;
+    color: var(--accent);
+    text-shadow: 
+        -1px -1px 0 grey,
+        1px -1px 0 grey,
+        -1px 1px 0 grey,
+        1px 1px 0 grey;
+}
+
+.github-container {
+    width: 100%;
+    height: 80vh;
+    margin: 0 auto;
+    max-width: 1200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.github-container a {
+    padding: 1rem 2rem;
+    background-color: var(--secondary-bg);
+    color: var(--text);
+    text-decoration: none;
+    border-radius: 10px;
+    font-size: 1.2rem;
+    transition: transform 0.3s, background-color 0.3s;
+}
+
+.github-container a:hover {
+    transform: scale(1.05);
+    background-color: var(--accent);
+    color: white;
+}
+
+.resume-container {
+    width: 100%;
+    height: 80vh;
+    margin: 0 auto;
+    max-width: 1200px;
+}
+
+iframe {
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.gallery-container {
+    display: flex;
+    gap: 1.5rem;
+    padding: 1rem;
+    max-width: 100%;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE and Edge */
+}
+
+.gallery-container::-webkit-scrollbar {
+    display: none; /* Chrome, Safari and Opera */
+}
+
+.gallery-item {
+    flex: 0 0 auto;
+    width: 500px;
+    height: 500px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+    scroll-snap-align: start;
+}
+
+.gallery-item:hover {
+    transform: scale(1.05);
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.gallery-item::after {
+    content: attr(data-caption);
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 10px;
+    transform: translateY(100%);
+    transition: transform 0.3s ease;
+}
+
+.gallery-item:hover::after {
+    transform: translateY(0);
+}
+
+#home {
+    height: 30vh;
+}
+
+.small-section {
+    min-height: 20vh;
+    padding: 6rem 2rem 2rem;
+}
+
+#links {
+    height: 30vh;
+}
+
+.links-container {
+    width: 100%;
+    height: 10vh;
+    margin: 0 auto;
+    max-width: 1200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.social-link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1rem;
+    background-color: var(--secondary-bg);
+    color: var(--text);
+    text-decoration: none;
+    border-radius: 10px;
+    font-size: 1.2rem;
+    transition: transform 0.3s, background-color 0.3s;
+}
+
+.social-link img {
+    width: 48px;
+    height: 48px;
+    object-fit: contain;
+}
+
+.social-link:hover {
+    transform: scale(1.05);
+    background-color: var(--accent);
+    color: white;
+}
+
+hr {
+    border: none;
+    height: 20px;
+    background: url('assets/linebreak.png') repeat-x center;
+    margin: 10px 0;
+}
