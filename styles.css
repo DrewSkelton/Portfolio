@@ -1,15 +1,35 @@
 :root {
-    --primary-bg: #FFFCAC;
-    --secondary-bg: #FFD3AC;
-    --accent: #FFACAE;
-    --text: #333333;
-    --complement: #ACD8FF;
+    --primary-bg: #967b5c;
+    --secondary-bg: #7fc779;
+    --accent: #F7ECA8;
+    --text: #F7ECA8;
+    --complement: #7fc779;
+}
+
+hr {
+    border: 1.5px solid var(--accent);
+}
+
+
+.logo {
+    max-width: 100px;
+    max-height: 100px;
+    margin-top: 45px;
+    border: 2px solid var(--accent);
+    background-color: var(--secondary-bg);
+    padding: 1rem;
+    position: fixed;
+    width: 100%;
+    top: 1;
+    z-index: 1000;
+    border-radius: 40px;
 }
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    text-shadow: -1.5px 0 black, 0 1.5px black, 0.5px 0 black, 0 -0.5px black;
 }
 
 body {
@@ -24,8 +44,9 @@ nav {
     padding: 1rem;
     position: fixed;
     width: 100%;
-    top: 0;
+    top: 1;
     z-index: 1000;
+    border: 1.5px solid var(--accent)
 }
 
 nav ul {
@@ -39,7 +60,7 @@ nav a {
     text-decoration: none;
     color: var(--text);
     font-weight: bold;
-    transition: color 0.3s;
+    transition: var(--complement) 0.3s;
 }
 
 nav a:hover {
@@ -55,11 +76,7 @@ h1, h2 {
     text-align: center;
     margin-bottom: 2rem;
     color: var(--accent);
-    text-shadow: 
-        -1px -1px 0 grey,
-        1px -1px 0 grey,
-        -1px 1px 0 grey,
-        1px 1px 0 grey;
+
 }
 
 .github-container {
@@ -161,8 +178,8 @@ iframe {
 }
 
 .small-section {
-    min-height: 20vh;
-    padding: 6rem 2rem 2rem;
+    min-height: 30vh;
+    padding: 6rem 2.5rem 2.5rem;
 }
 
 #links {
@@ -193,6 +210,7 @@ iframe {
     border-radius: 10px;
     font-size: 1.2rem;
     transition: transform 0.3s, background-color 0.3s;
+    border: 1.5px solid var(--accent)
 }
 
 .social-link img {
@@ -204,12 +222,5 @@ iframe {
 .social-link:hover {
     transform: scale(1.05);
     background-color: var(--accent);
-    color: white;
-}
-
-hr {
-    border: none;
-    height: 20px;
-    background: url('assets/linebreak.png') repeat-x center;
-    margin: 10px 0;
+    color: var(--secondary-bg);
 }
