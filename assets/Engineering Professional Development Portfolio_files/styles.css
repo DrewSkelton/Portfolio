@@ -40,35 +40,6 @@ header {
     overflow: hidden;
 }
 
-.header-content {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    width: 100%;
-}
-
-.header-headshot {
-    position: absolute;
-    left: 0;
-    top: 50%;
-    transform: translateY(-50%);
-}
-
-.headshot-image {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    border: 3px solid var(--white);
-    object-fit: cover;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-}
-
-.header-text {
-    flex: 1;
-    text-align: center;
-}
-
 header::after {
     content: "";
     position: absolute;
@@ -248,7 +219,7 @@ footer::before {
 }
 
 .profile-image {
-    max-width: 600px;
+    max-width: 300px;
     height: auto;
     border-radius: 6px;
     transition: transform 0.3s ease;
@@ -271,78 +242,15 @@ footer::before {
 }
 
 .conclusion-image {
-    max-width: 700px;
+    max-width: 500px;
     width: 100%;
-    height: 500px;
+    height: auto;
     border-radius: 6px;
     transition: transform 0.3s ease;
 }
 
 .conclusion-image:hover {
     transform: scale(1.02);
-}
-
-/* Hover image preview functionality */
-.project-hover-image {
-    position: fixed;
-    width: 500px;
-    height: 300px;
-    background-color: var(--light-blue);
-    border: 2px solid var(--medium-blue);
-    border-radius: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: bold;
-    color: var(--deep-blue);
-    text-align: center;
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
-    opacity: 0;
-    transform: scale(0.8);
-    transition: opacity 0.3s ease, transform 0.3s ease;
-    pointer-events: none;
-    z-index: 2000;
-    backdrop-filter: blur(10px);
-    overflow: hidden;
-}
-
-.project-hover-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 6px;
-}
-
-.project-hover-image.text-content {
-    background-color: var(--light-blue);
-}
-
-.project-hover-image.image-content {
-    background-color: var(--white);
-    padding: 0;
-}
-
-.project-hover-image.show {
-    opacity: 1;
-    transform: scale(1);
-}
-
-.project-section {
-    position: relative;
-    cursor: pointer;
-    transition: transform 0.2s ease;
-}
-
-.project-section:hover {
-    transform: translateY(-2px);
-}
-
-.project-section h3 {
-    transition: color 0.3s ease;
-}
-
-.project-section:hover h3 {
-    color: var(--medium-blue);
 }
 
 /* For small screens, adjust image sizes */
@@ -362,31 +270,5 @@ footer::before {
 
     .profile-image, .conclusion-image {
         max-width: 100%;
-    }
-    
-    .project-hover-image {
-        width: 250px;
-        height: 150px;
-        font-size: 0.9rem;
-    }
-    
-    /* Responsive header design for mobile */
-    .header-content {
-        flex-direction: column;
-        gap: 20px;
-    }
-    
-    .header-headshot {
-        position: static;
-        transform: none;
-    }
-    
-    .headshot-image {
-        width: 130px;
-        height: 130px;
-    }
-    
-    .header-text {
-        text-align: center;
     }
 }

@@ -3,140 +3,162 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Engineering Professional Development Portfolio</title>
+    <title>Drew Skelton - Programming Portfolio</title>
     <link rel="stylesheet" href="styles.css">
     <script src="script.js" defer></script>
 </head>
 <body>
     <header>
         <div class="container">
-            <h1>Professional Development Portfolio</h1>
-            <h2>ENGR2002</h2>
-            <p class="student-name">Drew Skelton</p>
+            <div class="header-content">
+                <div class="header-headshot">
+                    <img src="assets/Headshot.PNG" alt="Drew Skelton Headshot" class="headshot-image">
+                </div>
+                <div class="header-text">
+                    <h1>Drew Skelton</h1>
+                    <h2>Software Developer & AI Engineer</h2>
+                    <p class="student-name"><a href="https://github.com/DrewSkelton" target="_blank" style="color: white; text-decoration: none;">🔗 GitHub: DrewSkelton</a></p>
+                </div>
+            </div>
         </div>
     </header>
 
     <nav>
         <div class="container">
             <ul>
-                <li><a href="#introduction">Introduction</a></li>
-                <li><a href="#communication">Communication</a></li>
-                <li><a href="#teamwork">Teamwork</a></li>
-                <li><a href="#ethics">Ethical Decision-Making</a></li>
-                <li><a href="#knowledge">Acquiring Knowledge</a></li>
-                <li><a href="#conclusion">Conclusion</a></li>
+                <li><a href="#ai-projects">AI Projects</a></li>
+                <li><a href="#web-apps">Web Applications</a></li>
+                <li><a href="#iot-systems">IoT Systems</a></li>
+                <li><a href="#data-science">Data Science</a></li>
+                <li><a href="#other-projects">Other Projects</a></li>
+                <li><a href="#about">About</a></li>
             </ul>
         </div>
     </nav>
 
     <main>
-        <section id="introduction" class="container">
-            <h2>Introduction</h2>
+        <section id="ai-projects" class="container">
+            <h2>AI Projects</h2>
             <div class="wave-divider"></div>
             <div class="content-box">
-                <p>Coming into this ENGR2002 Professional development class, I have had lots of practice with engineering and communication skills. However, I have not gotten a chance to practice them with college-level expectations and groups. This class proved to be very helpful.</p>
-                <div class="image-container">
-                    <img src="assets/img3.png" alt="Profile Image" class="profile-image">
+                <div class="project-section" data-project="gemini-planner">
+                    <h3>Generative AI Planners - Plan With A Prompt</h3>
+                    <p><strong>Tech Stack:</strong> Google Gemini API, JavaScript, HTML/CSS, Vercel</p>
+                    <p>Google Gemini based web app that supports multimodal input and generates 6 types of productivity tools: Calendars, Trip Plans, Event Plans, Practice Tests, Study Guides, and Study Calendars.</p>
+                    <p><a href="https://planwithaprompt.vercel.app/" target="_blank" style="color: #0077b6; font-weight: bold;">🔗 Live Demo</a></p>
+                </div>
+                
+                <div class="project-section" data-project="blueprint-ai">
+                    <h3>Stable Diffusion App - BlueprintAI</h3>
+                    <p><strong>Tech Stack:</strong> Stable Diffusion, Python FastAPI, REST API</p>
+                    <p>Python FastAPI based REST API to generate images on top of a background with the Inpainting model for event venue visualization.</p>
+                    <p><a href="https://drewskelton.github.io/BlueprintAI-deploy/index.html" target="_blank" style="color: #0077b6; font-weight: bold;">🔗 Live Demo</a></p>
                 </div>
             </div>
         </section>
 
-        <section id="communication" class="container">
-            <h2>Communication</h2>
+        <section id="web-apps" class="container">
+            <h2>Web Applications</h2>
             <div class="wave-divider"></div>
             <div class="content-box">
-                <h3>Learning Objective</h3>
-                <p>Communication targeting various audiences with:</p>
-                <ul>
-                    <li>Writing that is clear, concise, cohesive, coherent, and appropriate for the audience</li>
-                    <li>Presentations delivered confidently with the appropriate information, audience level, and technique</li>
-                </ul>
+                <div class="project-section" data-project="fresh-start">
+                    <h3>AI Farm Planning Dashboard - Fresh Start</h3>
+                    <p><strong>Tech Stack:</strong> MongoDB, Express.js, React, Node.js, OpenAI API, Python, TensorFlow, MongoDB Atlas</p>
+                    <p>Award-winning web dashboard with 7 unique views and 50+ customization fields that integrates an OpenAI API to generate farm maintenance tasks and a TensorFlow model to predict crop yield based on user-designed farms.</p>
+                    <p>Users can easily create farm layouts from scratch, which are stored on the cloud alongside their tasks and statistics and can be compared quickly. <strong>Ranked 2nd out of 74 projects in Hacklahoma showcase</strong></p>
+                    <p><a href="https://fresh-start-mbqm485yh-drews-projects-9439d10f.vercel.app/" target="_blank" style="color: #0077b6; font-weight: bold;">🔗 Live Demo</a></p>
+                    <p><a href="https://devpost.com/software/fresh-start-q5f92s" target="_blank" style="color: #0077b6; font-weight: bold;">🔗 DevPost Project</a></p>
+                </div>
                 
-                <h3>Reflection</h3>
-                <p>I communicated through online channels and in-class formatted discussions. This was new to me since I'm not used to a high level of organization within groups. For example, we had a schedule for presentation practice and communication channels for dress code planning.</p>
-                
-                <h3>Future Application</h3>
-                <p>I can use these communication skills to more effectively email, present, and through meetings with future coworkers and bosses. Communication is a huge and underrepresented skill in engineers.</p>
+                <div class="project-section" data-project="biggie-bot">
+                    <h3>BiggieBot - Discord Bot</h3>
+                    <p><strong>Tech Stack:</strong> TypeScript, Discord.js, Node.js</p>
+                    <p>Started an Open-Source discord bot project to track food events on OU's campus and serve daily questions to discord servers of friends. Over 100 users, 2 contributors as of September 2nd.</p>
+                    <p>Provides other fun features like buzzword response, daily questions, and a multi-user counting game.</p>
+                    <p><a href="https://github.com/DrewSkelton/BiggieBot" target="_blank" style="color: #0077b6; font-weight: bold;">🔗 GitHub Repository</a></p>
+                </div>
             </div>
         </section>
 
-        <section id="teamwork" class="container">
-            <h2>Teamwork</h2>
+        <section id="iot-systems" class="container">
+            <h2>IoT Systems</h2>
             <div class="wave-divider"></div>
             <div class="content-box">
-                <h3>Learning Objective</h3>
-                <p>Teamwork, based on appropriate theories to recognize and build effective and efficient teams that:</p>
-                <ul>
-                    <li>Create and maintain an inclusive working climate</li>
-                    <li>Engage in dynamic, shared leadership</li>
-                    <li>Demonstrate interdependence and mutual accountability</li>
-                    <li>Resolve conflicts effectively</li>
-                </ul>
-                
-                <h3>Reflection</h3>
-                <p>I worked with many different personalities in my professional development team. Getting to know a team this deeply has not been a feature of my other work, as working together for a whole semester is fairly rare for most classes. For example, I got to know how each member responded to challenges in work.</p>
-                
-                <h3>Future Application</h3>
-                <p>I will use the connection-building skills I learned in this class to more deeply understand future teammates and bosses. These skills proved integral to our team's success and will help me and my teams greatly in future jobs.</p>
+                <div class="project-section" data-project="psl-lab">
+                    <h3>Filley Lab - PSL</h3>
+                    <p><strong>Tech Stack:</strong> Angular, Express.js, AWS, Node.js, Node-RED, Arduino, Raspberry Pi</p>
+                    <p>Developed an Angular-Express-Node-RED modern full stack IoT system from an old Node-RED only system. Saved over $2000/yr on external SaaS usage by implementing AWS remote access and WiFi capability hardware.</p>
+                    <p>This project involved modernizing the entire technology stack and integrating cloud services for remote monitoring and control of laboratory equipment.</p>
+                    <p><a href="https://github.com/DrewSkelton/PSLPoster" target="_blank" style="color: #0077b6; font-weight: bold;">🔗 GitHub Repository</a></p>
+                </div>
             </div>
         </section>
 
-        <section id="ethics" class="container">
-            <h2>Ethical Decision-Making</h2>
+        <section id="data-science" class="container">
+            <h2>Data Science & Machine Learning</h2>
             <div class="wave-divider"></div>
             <div class="content-box">
-                <h3>Learning Objective</h3>
-                <p>Ethical Decision-Making that applies theories and principles of engineering ethics to make data-informed decisions and considers the needs and impacts on all stakeholders by:</p>
-                <ul>
-                    <li>Identifying relevant stakeholders and their needs, interests, and/or concerns</li>
-                    <li>Collecting and analyzing potentially conflicting data and viewpoints</li>
-                    <li>Weighing costs and benefits to balance health and welfare globally and locally</li>
-                    <li>Making and justifying decisions</li>
-                </ul>
-                
-                <h3>Reflection</h3>
-                <p>In order to examine ethical perspectives, we went through several projects meant to help make the world a more sustainable place. This class taught me a lot about how ethics play an important part in engineering and how engineering can help lots of people. For example, we examined several perspectives on our technology, UZELA.</p>
-                
-                <h3>Future Application</h3>
-                <p>Ethics are a huge deal with any projects I encounter. I have learned from this class how to be thorough in all of my work and examine all ethical perspectives, and this should always be paramount in any job. There is no amount of money or status that will undermine my commitment to ethical decision-making.</p>
+                <div class="project-section" data-project="carbon-modeling">
+                    <h3>Carbon Statistical Modeling - DISC Agri-AI Challenge</h3>
+                    <p><strong>Tech Stack:</strong> Python, Scikit-Learn, Google Colab</p>
+                    <p><em>Data and results are confidential</em></p>
+                    <p>Scikit-Learn models trained and tested on agricultural data to over 80% accuracy in predicting carbon fluxes. Ensured data quality despite faulty readings, presented insights to 5+ PhD Scientists.</p>
+                    
+                    <h3>Technical Approach</h3>
+                    <ul>
+                        <li>Built Correlation Matrices and Structural Equation Models (SEM)</li>
+                        <li>Created an Excel sheet with a variety of feature subsets by referencing the matrices and SEM</li>
+                        <li>Developed scripts for easy switching of feature sets with immediate output generation</li>
+                        <li>Models used: LinearRegression, RandomForest, SVM, and DecisionTree from SK-Learn</li>
+                        <li>Focused on targeting specific flux values for estimation</li>
+                    </ul>
+                </div>
             </div>
         </section>
 
-        <section id="knowledge" class="container">
-            <h2>Acquiring and Applying New Knowledge</h2>
+        <section id="other-projects" class="container">
+            <h2>Other Projects</h2>
             <div class="wave-divider"></div>
             <div class="content-box">
-                <h3>Learning Objective</h3>
-                <p>Acquiring and Applying New Knowledge is fundamental to all other objectives of the course, requiring students to:</p>
-                <ul>
-                    <li>Articulate key questions and identify the appropriate data required to answer them</li>
-                    <li>Locate/obtain, summarize, and synthesize data from reliable, valid sources</li>
-                    <li>Apply the new knowledge in support of engineering decisions</li>
-                </ul>
-                
-                <h3>Reflection</h3>
-                <p>Succeeding in this class required me to learn technologies and soft skills in short amounts of time. It additionally was heavily research-based, requiring me to learn lots of source-finding, annotating, and scholarly skills. For example, we learned what a strong amount of citations looks like and how to tie multiple papers into one good main idea.</p>
-                
-                <h3>Future Application</h3>
-                <p>For any job, there will be a great deal of information-gathering required to succeed. It's important to be good and finding the correct sources of information and tying them into day-to-day life in order to become an effective member on a team.</p>
+                <div class="project-section" data-project="os-simulation">
+                    <h3>OS Simulation</h3>
+                    <p><strong>Tech Stack:</strong> C++</p>
+                    <p>This is an OS simulation that handles job scheduling using the round robin method and memory management using a contiguous segment table to store non-contiguous blocks of memory.</p>
+                    <p>Compute, Print, Store, and Load operations are fully supported, with I/O device processing simulated. Cumulative and incrementally built project over the semester of Spring 2025.</p>
+                    <p><a href="https://github.com/DrewSkelton/OS_Simulation" target="_blank" style="color: #0077b6; font-weight: bold;">🔗 GitHub Repository</a></p>
+                </div>
             </div>
         </section>
 
-        <section id="conclusion" class="container">
-            <h2>Conclusion</h2>
+        <section id="about" class="container">
+            <h2>About Me</h2>
             <div class="wave-divider"></div>
             <div class="content-box">
-                <p>I ended up having a great time with my group and projects throughout this semester. This class was a very fun and enriching experience, helping me refine my skills and become a more well rounded professional engineer.</p>
+                <p>I'm a passionate software developer and AI engineer with experience across multiple technology stacks and domains. My work spans from generative AI applications and machine learning models to full-stack web development and IoT systems.</p>
+                <p>I enjoy tackling complex problems and building solutions that make a real impact, whether it's creating productivity tools with AI, developing award-winning web applications, or modernizing legacy systems.</p>
+                <p><strong>Key Areas of Expertise:</strong></p>
+                <ul>
+                    <li>Artificial Intelligence & Machine Learning</li>
+                    <li>Full-Stack Web Development</li>
+                    <li>IoT Systems & Hardware Integration</li>
+                    <li>Data Science & Statistical Modeling</li>
+                    <li>System Programming & OS Development</li>
+                </ul>
                 <div class="image-container">
-                    <img src="assets/img2.jpg" alt="Conclusion Image" class="conclusion-image">
+                    <img src="assets/Footer.jpg" alt="Professional Footer Image" class="profile-image">
                 </div>
             </div>
         </section>
     </main>
 
+    <!-- Hover image preview -->
+    <div id="project-hover-image" class="project-hover-image">
+        Project Preview
+    </div>
+
     <footer>
         <div class="container">
-            <p>&copy; <span id="year"></span> Professional Development Portfolio - ENGR2002 - 5/3/2025</p>
+            <p>&copy; <span id="year"></span> Drew Skelton - Programming Portfolio | <a href="https://github.com/DrewSkelton" target="_blank" style="color: #90e0ef;">GitHub</a></p>
         </div>
     </footer>
 </body>
