@@ -225,8 +225,8 @@ const NetflixCarousel = () => {
         // Apply stronger slide-in offsets with slower transition
         leftNavRef.current.style.transition = 'transform 1.2s ease-out';
         rightNavRef.current.style.transition = 'transform 1.2s ease-out';
-        leftNavRef.current.style.transform = `translateY(-50%) translateX(-${offset}px)`;
-        rightNavRef.current.style.transform = `translateY(-50%) translateX(${offset}px)`;
+        leftNavRef.current.style.transform = `translateY(-100%) translateX(-${offset}px)`;
+        rightNavRef.current.style.transform = `translateY(-100%) translateX(${offset}px)`;
       };
       handleParallax();
       window.addEventListener('scroll', handleParallax, { passive: true });
