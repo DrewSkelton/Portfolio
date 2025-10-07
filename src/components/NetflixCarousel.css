@@ -121,6 +121,12 @@
 
 /* Mobile accessibility: shrink carousel and disable parallax offsets */
 @media (max-width: 768px) {
+  /* Scale entire carousel down and freeze internal animations */
+  .netflix-carousel {
+    transform: scale(0.25);
+    transform-origin: top center;
+  }
+
   .carousel-container {
     height: 620px; /* smaller on mobile */
     padding: 20px 0;
@@ -134,12 +140,25 @@
   .project-card {
     width: 300px;
     min-height: 560px;
+    transform: none !important;
   }
 
   .project-card.middle-card {
     width: 320px;
     min-height: 580px;
-    transform: scale(1.02);
+    transform: none !important;
+  }
+
+  /* Disable hover animations/movement on mobile */
+  .project-card:hover,
+  .project-card.hovered,
+  .project-card.middle-card:hover,
+  .project-card.middle-card.hovered {
+    transform: none !important;
+  }
+  .project-card:hover .card-image img,
+  .project-card.hovered .card-image img {
+    transform: none !important;
   }
 
   /* Keep nav buttons static (no parallax slide) and closer to edges */
