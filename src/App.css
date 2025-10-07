@@ -517,7 +517,9 @@
   }
 
   .tech-group .tech-card {
-    min-width: 100%;
+    min-width: 85%; /* narrower cards on mobile */
+    max-width: 85%;
+    margin: 0 auto;
   }
 
   .image-container {

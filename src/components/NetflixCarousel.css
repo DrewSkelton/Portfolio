@@ -121,16 +121,20 @@
 
 /* Mobile accessibility: shrink carousel and disable parallax offsets */
 @media (max-width: 768px) {
-  /* Mobile: simple swipable carousel, no scaling/centering transforms */
+  /* Mobile: scale entire component to 50% and center */
   .netflix-carousel {
-    display: block;
+    transform: scale(0.5);
+    transform-origin: top center;
+    width: max-content;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .carousel-container {
     height: 620px; /* compact height on mobile */
     padding: 20px 0;
-    overflow: hidden; /* contain content within viewport */
-    max-width: 100%; /* use full mobile width */
+    overflow: visible; /* avoid clipping when scaled */
+    max-width: 100%;
   }
 
   .carousel-track {
