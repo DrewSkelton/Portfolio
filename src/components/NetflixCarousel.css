@@ -15,7 +15,7 @@
 .carousel-header h3 {
   font-size: 1.5rem;
   font-weight: 600;
-  color: var(--netflix-white);
+  color: var(--netflix-red);
 }
 
 .carousel-controls {
@@ -236,6 +236,7 @@
   font-size: 1.3rem;
   font-weight: 600;
   color: var(--netflix-white);
+  text-shadow: 1px 1px 1px var(--netflix-red);
   margin-bottom: 5px;
   line-height: 1.3;
 }
@@ -321,12 +322,12 @@
 
 .project-link.github {
   background-color: transparent;
-  color: var(--netflix-white);
-  border: 2px solid var(--netflix-white);
+  color: var(--netflix-red);
+  border: 2px solid var(--netflix-red);
 }
 
 .project-link.github:hover {
-  background-color: var(--netflix-white);
+  background-color: var(--netflix-red);
   color: var(--netflix-dark);
 }
 
