@@ -119,6 +119,40 @@
   opacity: 0.5;
 }
 
+/* Mobile accessibility: shrink carousel and disable parallax offsets */
+@media (max-width: 768px) {
+  .carousel-container {
+    height: 620px; /* smaller on mobile */
+    padding: 20px 0;
+  }
+
+  .carousel-track {
+    gap: 12px;
+    padding: 0 12px;
+  }
+
+  .project-card {
+    width: 300px;
+    min-height: 560px;
+  }
+
+  .project-card.middle-card {
+    width: 320px;
+    min-height: 580px;
+    transform: scale(1.02);
+  }
+
+  /* Keep nav buttons static (no parallax slide) and closer to edges */
+  .parallax-nav.left {
+    left: 8px;
+    transform: translateY(-50%) !important;
+  }
+  .parallax-nav.right {
+    right: 8px;
+    transform: translateY(-50%) !important;
+  }
+}
+
 .project-card {
   width: 350px;
   min-height: 600px; /* Increased height for better alignment */
