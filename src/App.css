@@ -459,6 +459,7 @@
     font-size: 1rem;
   }
 
+
   /* About Me Section Mobile Styles */
   .about-me {
     margin: 20px 3%;
@@ -492,6 +493,7 @@
   }
 
   .profile-section {
+    margin-top: -75px;
     order: 1;
   }
 
@@ -509,6 +511,11 @@
 
   .tech-group {
     order: 5;
+    margin-left: 20px; /* Add margin to shift right */
+  }
+
+  .tech-stack-title {
+    margin-left: 14%; /* Move title more to the right */
   }
 
   .tech-group-container {
@@ -565,59 +572,6 @@
   }
 
   .tech-label {
-    font-size: 0.65rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .about-me {
-    margin: 15px 2%;
-    padding: 25px 15px;
-    min-height: 1500px;
-  }
-
-  .image-container {
-    width: 200px;
-    height: 200px;
-  }
-
-  .text-card, .tech-card {
-    padding: 15px;
-  }
-
-  .about-me p {
-    font-size: 0.95rem;
-    line-height: 1.5;
-    margin-bottom: 15px;
-  }
-
-  .about-me p:last-of-type {
-    font-size: 1rem;
-  }
-
-  .about-title {
-    font-size: 1.8rem;
-  }
-
-  .category-title {
-    font-size: 0.9rem;
-  }
-
-  .tech-icons {
-    grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
-    gap: 10px;
-  }
-
-  .tech-icon {
-    padding: 8px 5px;
-    min-height: 70px;
-  }
-
-  .tech-icon i {
-    font-size: 1.4rem;
-  }
-
-  .tech-label {
-    font-size: 0.6rem;
+    font-size: 0.55rem;
   }
 }

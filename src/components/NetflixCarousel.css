@@ -123,29 +123,32 @@
 @media (max-width: 768px) {
   /* Mobile: scale entire component to 50% and center */
   .netflix-carousel {
-    transform: scale(0.5);
-    transform-origin: top center;
-    width: max-content;
     margin-left: auto;
     margin-right: auto;
+    margin-top: -100px;
   }
 
   .carousel-container {
-    height: 620px; /* compact height on mobile */
+    height: auto; /* Allow container to grow with content */
     padding: 20px 0;
-    overflow: visible; /* avoid clipping when scaled */
+    overflow-y: visible; /* Enable vertical scrolling */
     max-width: 100%;
   }
 
   .carousel-track {
-    gap: 12px;
+    display: flex;
+    flex-direction: column; /* Stack cards vertically */
+    gap: 24px; /* Increased vertical spacing between cards */
     padding: 0 12px;
+    width: 100%; /* Take full width */
+    height: auto; /* Allow height to grow */
   }
 
   .project-card {
     width: 300px;
     min-height: 560px;
     transform: none !important;
+    margin: 0 auto; /* Center cards horizontally */
   }
 
   .project-card.middle-card {
@@ -159,23 +162,36 @@
   .project-card.hovered,
   .project-card.middle-card:hover,
   .project-card.middle-card.hovered {
-    transform: none !important; /* keep styles but stop motion */
+    transform: none !important;
   }
+  
   .project-card:hover .card-image img,
   .project-card.hovered .card-image img {
     transform: none !important;
   }
 
-  /* Keep nav buttons static (no parallax slide) and closer to edges */
-  .parallax-nav.left {
-    left: 8px;
-    transform: translateY(-50%) !important;
-    z-index: 30; /* ensure above scaled content */
-  }
+  /* Reposition nav buttons for vertical layout */
+  .parallax-nav.left,
   .parallax-nav.right {
-    right: 8px;
-    transform: translateY(-50%) !important;
+    left: 50%; /* Center horizontally */
+    transform: translateX(-50%) !important;
     z-index: 30;
+  }
+
+  .parallax-nav.left {
+    top: 0;
+  }
+
+  .parallax-nav.right {
+    top: auto;
+    bottom: 0;
+  }
+
+  /* Hide navigation elements on mobile */
+  .parallax-nav,
+  .carousel-header .carousel-controls,
+  .carousel-progress {
+    display: none !important;
   }
 }
 
