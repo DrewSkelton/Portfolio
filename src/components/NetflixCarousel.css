@@ -121,20 +121,16 @@
 
 /* Mobile accessibility: shrink carousel and disable parallax offsets */
 @media (max-width: 768px) {
-  /* Scale entire carousel down and freeze internal animations */
+  /* Mobile: simple swipable carousel, no scaling/centering transforms */
   .netflix-carousel {
-    /* Use flex to center child container; don't scale wrapper to avoid layout quirks */
-    display: flex;
-    justify-content: center;
+    display: block;
   }
 
   .carousel-container {
-    height: 620px; /* smaller on mobile */
+    height: 620px; /* compact height on mobile */
     padding: 20px 0;
-    overflow: visible; /* avoid clipping scaled content */
-    max-width: 2000px; /* wider viewport so more cards are visible when scaled */
-    transform: scale(0.5);
-    transform-origin: top center;
+    overflow: hidden; /* contain content within viewport */
+    max-width: 100%; /* use full mobile width */
   }
 
   .carousel-track {
