@@ -155,7 +155,7 @@
   .project-card.hovered,
   .project-card.middle-card:hover,
   .project-card.middle-card.hovered {
-    transform: none !important;
+    transform: none !important; /* keep styles but stop motion */
   }
   .project-card:hover .card-image img,
   .project-card.hovered .card-image img {

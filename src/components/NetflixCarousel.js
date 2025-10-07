@@ -113,9 +113,23 @@ const NetflixCarousel = () => {
 
   // Initialize displayed projects
   useEffect(() => {
-    const initialProjects = generateInfiniteCards(0, 42); // Start with 42 cards (6 sets) for better buffer
-    setDisplayedProjects(initialProjects);
-    totalGeneratedCards.current = initialProjects.length;
+    const isMobile = typeof window !== 'undefined' && window.innerWidth <= 768;
+    if (isMobile) {
+      // On mobile, show a single copy of each project (no infinite repeats)
+      const singleSet = projects.map((project, idx) => ({
+        ...project,
+        uniqueId: `${project.id}-mobile-${idx}`,
+        displayIndex: idx
+      }));
+      setDisplayedProjects(singleSet);
+      totalGeneratedCards.current = singleSet.length;
+      setCurrentIndex(0);
+      setMiddleCardIndex(1);
+    } else {
+      const initialProjects = generateInfiniteCards(0, 42); // Desktop: large buffer for smooth horizontal nav
+      setDisplayedProjects(initialProjects);
+      totalGeneratedCards.current = initialProjects.length;
+    }
   }, []);
 
   const scrollToIndex = (index) => {
