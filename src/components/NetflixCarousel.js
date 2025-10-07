@@ -192,7 +192,7 @@ const NetflixCarousel = () => {
     
     touchEndX.current = e.changedTouches[0].clientX;
     const diff = touchStartX.current - touchEndX.current;
-    const threshold = 50; // Minimum swipe distance to trigger navigation
+    const threshold = window.innerWidth <= 768 ? 20 : 50; // Lower threshold on mobile
     
     // Only trigger if swipe distance is significant enough
     if (Math.abs(diff) < threshold) return;
