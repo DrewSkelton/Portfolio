@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import './App.css';
 import NetflixCarousel from './components/NetflixCarousel';
-import drewgaImage from './assets/Drewga.png';
 
 function App() {
   useEffect(() => {
@@ -84,7 +83,7 @@ function App() {
 
         <div className="floating-section profile-section">
           <div className="image-container">
-            <img src={drewgaImage} alt="Me" />
+            <img src="/assets/PSL.png" alt="Me" />
           </div>
         </div>
 
