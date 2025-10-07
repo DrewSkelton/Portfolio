@@ -60,72 +60,163 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // Project hover image functionality
-    const hoverImage = document.getElementById('project-hover-image');
-    const projectSections = document.querySelectorAll('.project-section');
+    // Carousel functionality
+    const carouselSlides = document.getElementById('carousel-slides');
+    const carouselIndicators = document.getElementById('carousel-indicators');
+    const carouselCaption = document.getElementById('carousel-caption');
+    const prevBtn = document.getElementById('prev-btn');
+    const nextBtn = document.getElementById('next-btn');
     
     // Project image content mapping
     const projectImages = {
-        'gemini-planner': { type: 'image', src: 'assets/Plan.png', alt: 'Plan With A Prompt - AI Planner Interface' },
-        'blueprint-ai': { type: 'image', src: 'assets/Blueprint.png', alt: 'BlueprintAI - Stable Diffusion Interface' },
-        'fresh-start': { type: 'image', src: 'assets/FreshStart.png', alt: 'Fresh Start - Farm Planning Dashboard' },
-        'biggie-bot': { type: 'image', src: 'assets/Biggie.png', alt: 'BiggieBot - Discord Bot Interface' },
-        'psl-lab': { type: 'image', src: 'assets/PSL.png', alt: 'PSL Lab - IoT System Interface' },
-        'carbon-modeling': { type: 'text', content: '📊 Carbon Modeling\n\nML with Scikit-Learn\n80%+ accuracy\n\nAgricultural data\nanalysis' },
-        'os-simulation': { type: 'text', content: '💻 OS Simulation\n\nC++ Implementation\nRound Robin\n\nMemory management\nsystem' }
+        'gemini-planner': { 
+            type: 'image', 
+            src: 'assets/Plan.png', 
+            alt: 'Plan With A Prompt - AI Planner Interface',
+            title: 'Generative AI Planners - Plan With A Prompt'
+        },
+        'blueprint-ai': { 
+            type: 'image', 
+            src: 'assets/Blueprint.png', 
+            alt: 'BlueprintAI - Stable Diffusion Interface',
+            title: 'Stable Diffusion App - BlueprintAI'
+        },
+        'fresh-start': { 
+            type: 'image', 
+            src: 'assets/FreshStart.png', 
+            alt: 'Fresh Start - Farm Planning Dashboard',
+            title: 'AI Farm Planning Dashboard - Fresh Start'
+        },
+        'biggie-bot': { 
+            type: 'image', 
+            src: 'assets/Biggie.png', 
+            alt: 'BiggieBot - Discord Bot Interface',
+            title: 'BiggieBot - Discord Bot'
+        },
+        'psl-lab': { 
+            type: 'image', 
+            src: 'assets/PSL.png', 
+            alt: 'PSL Lab - IoT System Interface',
+            title: 'Filley Lab - PSL IoT System'
+        },
+        'carbon-modeling': { 
+            type: 'text', 
+            content: '📊 Carbon Modeling\n\nML with Scikit-Learn\n80%+ accuracy\n\nAgricultural data\nanalysis',
+            title: 'Carbon Statistical Modeling'
+        },
+        'os-simulation': { 
+            type: 'text', 
+            content: '💻 OS Simulation\n\nC++ Implementation\nRound Robin\n\nMemory management\nsystem',
+            title: 'OS Simulation - C++'
+        }
     };
     
-    projectSections.forEach(section => {
-        section.addEventListener('mouseenter', function(e) {
-            const projectId = this.getAttribute('data-project');
-            const projectData = projectImages[projectId];
+    let currentSlide = 0;
+    const totalSlides = Object.keys(projectImages).length;
+    
+    // Initialize carousel
+    function initializeCarousel() {
+        // Create slides
+        Object.entries(projectImages).forEach(([key, data]) => {
+            const slide = document.createElement('div');
+            slide.className = 'carousel-slide';
             
-            if (!projectData) return;
-            
-            // Clear previous content and classes
-            hoverImage.innerHTML = '';
-            hoverImage.className = 'project-hover-image';
-            
-            if (projectData.type === 'image') {
-                // Create and display image
+            if (data.type === 'image') {
                 const img = document.createElement('img');
-                img.src = projectData.src;
-                img.alt = projectData.alt;
+                img.src = data.src;
+                img.alt = data.alt;
                 img.onerror = function() {
                     // Fallback to text if image fails to load
-                    hoverImage.innerHTML = `Image not found:<br>${projectData.alt}`;
-                    hoverImage.classList.add('text-content');
+                    slide.innerHTML = `Image not found:<br>${data.alt}`;
+                    slide.classList.add('text-content');
                 };
-                hoverImage.appendChild(img);
-                hoverImage.classList.add('image-content');
+                slide.appendChild(img);
             } else {
-                // Display text content
-                hoverImage.innerHTML = projectData.content.replace(/\n/g, '<br>');
-                hoverImage.classList.add('text-content');
+                slide.innerHTML = data.content.replace(/\n/g, '<br>');
+                slide.classList.add('text-content');
             }
             
-            hoverImage.classList.add('show');
-            
-            // Position the image near the cursor but offset to the side
-            const updatePosition = (event) => {
-                const x = event.clientX + 20;
-                const y = event.clientY - 100;
-                
-                // Keep image within viewport
-                const maxX = window.innerWidth - hoverImage.offsetWidth - 20;
-                const maxY = window.innerHeight - hoverImage.offsetHeight - 20;
-                
-                hoverImage.style.left = Math.min(x, maxX) + 'px';
-                hoverImage.style.top = Math.max(20, Math.min(y, maxY)) + 'px';
-            };
-            
-            updatePosition(e);
-            this.addEventListener('mousemove', updatePosition);
-            
-            this.addEventListener('mouseleave', function() {
-                hoverImage.classList.remove('show');
-                this.removeEventListener('mousemove', updatePosition);
-            }, { once: true });
+            carouselSlides.appendChild(slide);
         });
+        
+        // Create indicators
+        Object.entries(projectImages).forEach(([key, data], index) => {
+            const indicator = document.createElement('button');
+            indicator.className = 'carousel-indicator';
+            if (index === 0) indicator.classList.add('active');
+            indicator.addEventListener('click', () => goToSlide(index));
+            carouselIndicators.appendChild(indicator);
+        });
+        
+        // Update initial caption
+        updateCaption();
+    }
+    
+    // Update carousel position
+    function updateCarousel() {
+        const translateX = -currentSlide * 100;
+        carouselSlides.style.transform = `translateX(${translateX}%)`;
+        
+        // Update indicators
+        document.querySelectorAll('.carousel-indicator').forEach((indicator, index) => {
+            indicator.classList.toggle('active', index === currentSlide);
+        });
+        
+        updateCaption();
+    }
+    
+    // Update caption
+    function updateCaption() {
+        const currentData = Object.values(projectImages)[currentSlide];
+        carouselCaption.textContent = currentData.title;
+    }
+    
+    // Navigate to specific slide
+    function goToSlide(slideIndex) {
+        currentSlide = slideIndex;
+        updateCarousel();
+    }
+    
+    // Previous slide
+    function prevSlide() {
+        currentSlide = currentSlide > 0 ? currentSlide - 1 : totalSlides - 1;
+        updateCarousel();
+    }
+    
+    // Next slide
+    function nextSlide() {
+        currentSlide = currentSlide < totalSlides - 1 ? currentSlide + 1 : 0;
+        updateCarousel();
+    }
+    
+    // Event listeners
+    prevBtn.addEventListener('click', prevSlide);
+    nextBtn.addEventListener('click', nextSlide);
+    
+    // Auto-advance carousel (optional)
+    let autoSlideInterval;
+    
+    function startAutoSlide() {
+        autoSlideInterval = setInterval(nextSlide, 5000); // Change slide every 5 seconds
+    }
+    
+    function stopAutoSlide() {
+        clearInterval(autoSlideInterval);
+    }
+    
+    // Start auto-slide and pause on hover
+    startAutoSlide();
+    
+    const carouselContainer = document.querySelector('.carousel-container');
+    carouselContainer.addEventListener('mouseenter', stopAutoSlide);
+    carouselContainer.addEventListener('mouseleave', startAutoSlide);
+    
+    // Keyboard navigation
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowLeft') prevSlide();
+        if (e.key === 'ArrowRight') nextSlide();
     });
+    
+    // Initialize the carousel
+    initializeCarousel();
 });

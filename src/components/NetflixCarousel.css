@@ -1,0 +1,493 @@
+.netflix-carousel {
+  margin: 40px 0;
+  padding: 0 20px;
+  
+}
+
+.carousel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding: 0 20px;
+}
+
+.carousel-header h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--netflix-white);
+}
+
+.carousel-controls {
+  display: flex;
+  gap: 10px;
+}
+
+.nav-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: none;
+  background-color: rgba(255, 255, 255, 0.2);
+  color: var(--netflix-white);
+  font-size: 1.2rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+
+.nav-btn:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+  transform: scale(1.1);
+}
+
+/* Removed disabled state since we're implementing looping */
+
+.carousel-container {
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  padding: 10px 0;
+  width: 100%;
+  max-width: 1150px; /* Increased to accommodate wider cards (3 × 350px + gaps + padding) */
+  margin: 0 auto;
+  height: 700px;
+}
+
+.carousel-container::-webkit-scrollbar {
+  display: none;
+}
+
+.carousel-track {
+  display: flex;
+  gap: 20px;
+  padding: 0 20px;
+  width: max-content;
+  height: 75%;
+  margin-top: 20px;
+}
+
+.project-card {
+  width: 350px;
+  min-height: 600px; /* Increased height for better alignment */
+  background-color: var(--netflix-gray);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: all 0.4s ease;
+  cursor: pointer;
+  position: relative;
+  box-shadow: var(--shadow);
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.project-card:active {
+  transform: scale(0.98);
+}
+
+/* Middle card styling - larger and more prominent */
+.project-card.middle-card {
+  width: 390px;
+  min-height: 620px; /* Reduced from 680px to make it shorter */
+  transform: scale(1.05);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+  border: 2px solid var(--netflix-red);
+  z-index: 5;
+}
+
+.project-card:hover,
+.project-card.hovered {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: var(--shadow-hover);
+  z-index: 10;
+}
+
+/* Middle card hover effect */
+.project-card.middle-card:hover,
+.project-card.middle-card.hovered {
+  transform: translateY(-15px) scale(1.08);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.6);
+  z-index: 15;
+}
+
+
+
+.card-image {
+  position: relative;
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+}
+
+.card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.project-card:hover .card-image img,
+.project-card.hovered .card-image img {
+  transform: scale(1.1);
+}
+
+.no-image-placeholder {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, var(--netflix-red) 0%, #b81d13 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.placeholder-content {
+  text-align: center;
+  color: var(--netflix-white);
+}
+
+.placeholder-icon {
+  font-size: 3rem;
+  margin-bottom: 10px;
+}
+
+.placeholder-text {
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.card-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.7) 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 15px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.project-card:hover .card-overlay,
+.project-card.hovered .card-overlay {
+  opacity: 1;
+}
+
+.project-category {
+  background-color: var(--netflix-red);
+  color: var(--netflix-white);
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  margin-bottom: 8px;
+  align-self: flex-start;
+}
+
+.project-highlight {
+  background-color: rgba(255, 255, 255, 0.9);
+  color: var(--netflix-dark);
+  padding: 6px 10px;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  align-self: flex-start;
+}
+
+/* Inline highlight styling - positioned above links */
+.project-link.devpost {
+ 
+  color: var(--netflix-white);
+  padding: 10px 15px;
+  border-radius: 8px;
+  font-size: 0.65rem;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 15px;
+  text-decoration-color: var(--netflix-red);
+  text-decoration-style: dashed;
+  box-shadow: 0 2px 8px rgba(255, 244, 36, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.card-content {
+  padding: 20px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 400px; /* Ensure consistent height for all cards */
+}
+
+.project-header {
+  margin-bottom: 15px;
+  min-height: 60px; /* Consistent header height */
+}
+
+.project-title {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--netflix-white);
+  margin-bottom: 5px;
+  line-height: 1.3;
+}
+
+.project-subtitle {
+  font-size: 1rem;
+  color: var(--netflix-light-gray);
+  font-weight: 400;
+}
+
+.tech-stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 15px;
+  min-height: 32px; /* Reduced height to prevent empty lines */
+  align-items: flex-start;
+}
+
+.tech-tag {
+  background-color: rgba(229, 9, 20, 0.2);
+  color: var(--netflix-red);
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  border: 1px solid rgba(229, 9, 20, 0.3);
+  white-space: nowrap; /* Prevent text wrapping within tags */
+  line-height: 1.2; /* Consistent line height */
+  display: inline-block;
+  max-width: 100%; /* Ensure tags don't exceed container width */
+}
+
+.project-description {
+  font-size: 0.9rem;
+  color: var(--netflix-hover);
+  line-height: 1.5;
+  margin-bottom: 15px;
+  flex: 1;
+  min-height: 120px; /* Consistent description height */
+  overflow-y: auto;
+  display: flex;
+  align-items: center; /* Vertically center the description text */
+  justify-content: flex-start; /* Keep text aligned to the left horizontally */
+}
+
+.project-note {
+  font-size: 0.8rem;
+  color: var(--netflix-light-gray);
+  font-style: italic;
+  margin-bottom: 15px;
+}
+
+.project-links {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: auto; /* Push links to bottom */
+  min-height: 80px; /* Consistent links height */
+  justify-content: flex-end;
+}
+
+.project-link {
+  display: inline-block;
+  padding: 10px 16px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.project-link.demo {
+  background-color: var(--netflix-red);
+  color: var(--netflix-white);
+}
+
+.project-link.demo:hover {
+  background-color: #c40813;
+  transform: translateY(-2px);
+}
+
+.project-link.github {
+  background-color: transparent;
+  color: var(--netflix-white);
+  border: 2px solid var(--netflix-white);
+}
+
+.project-link.github:hover {
+  background-color: var(--netflix-white);
+  color: var(--netflix-dark);
+}
+
+
+
+.project-link.devpost:hover {
+  background-color: #004080;
+  transform: translateY(-2px);
+}
+
+.carousel-indicators {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 30px;
+  padding: 0 20px;
+}
+
+.indicator {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: none;
+  background-color: rgba(255, 255, 255, 0.3);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.indicator.active {
+  background-color: var(--netflix-red);
+  transform: scale(1.2);
+}
+
+.indicator:hover {
+  background-color: rgba(255, 255, 255, 0.6);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .netflix-carousel {
+    padding: 0 10px;
+  }
+
+  .carousel-header {
+    padding: 0 10px;
+  }
+
+  .carousel-header h3 {
+    font-size: 1.3rem;
+  }
+
+  .nav-btn {
+    width: 35px;
+    height: 35px;
+    font-size: 1rem;
+  }
+
+  .carousel-container {
+    max-width: 100%; /* Full width on mobile */
+  }
+
+  .carousel-track {
+    gap: 15px;
+    padding: 0 10px;
+  }
+
+  .project-card {
+    width: 320px;
+    min-height: 600px; /* Keep consistent height */
+  }
+
+  .project-card.middle-card {
+    width: 360px;
+    min-height: 620px; /* Reduced height for mobile */
+    transform: scale(1.03);
+  }
+
+  .card-image {
+    height: 180px;
+  }
+
+  .card-content {
+    padding: 15px;
+    min-height: 420px; /* Adjusted for mobile */
+  }
+
+  .project-header {
+    min-height: 70px; /* Slightly taller on mobile */
+  }
+
+  .tech-stack {
+    min-height: 36px; /* Adjusted height for mobile */
+  }
+
+  .project-description {
+    font-size: 0.85rem;
+    min-height: 140px; /* More space on mobile */
+    display: flex;
+    align-items: center; /* Vertically center description text on mobile */
+    justify-content: flex-start; /* Keep text aligned to the left horizontally */
+  }
+
+  .project-links {
+    min-height: 90px; /* More space for links */
+  }
+
+  .project-title {
+    font-size: 1.2rem;
+  }
+
+  .tech-tag {
+    font-size: 0.7rem;
+    padding: 3px 6px;
+  }
+
+  .project-link {
+    padding: 8px 12px;
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .project-card {
+    width: 300px;
+    min-height: 600px; /* Keep consistent height */
+  }
+
+  .project-card.middle-card {
+    width: 340px;
+    min-height: 620px; /* Reduced height for small mobile */
+    transform: scale(1.02);
+  }
+
+  .card-image {
+    height: 160px;
+  }
+
+  .carousel-track {
+    gap: 10px;
+  }
+
+  .card-content {
+    min-height: 440px; /* Adjusted for small mobile */
+  }
+
+  .project-header {
+    min-height: 80px; /* More space for title wrapping */
+  }
+
+  .tech-stack {
+    min-height: 60px; /* More space for tech tags */
+  }
+
+  .project-description {
+    min-height: 160px; /* More description space */
+    display: flex;
+    align-items: center; /* Vertically center description text on small mobile */
+    justify-content: flex-start; /* Keep text aligned to the left horizontally */
+  }
+
+  .project-links {
+    min-height: 100px; /* More link space */
+  }
+}
