@@ -83,7 +83,7 @@ function App() {
 
         <div className="floating-section profile-section">
           <div className="image-container">
-            <img src="/assets/PSL.png" alt="Me" />
+            <img src="/assets/Drewga.png" alt="Me" />
           </div>
         </div>
 
