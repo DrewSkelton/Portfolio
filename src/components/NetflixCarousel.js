@@ -90,19 +90,6 @@ const NetflixCarousel = () => {
         { type: 'github', url: 'https://github.com/DrewSkelton/BiggieBot', label: 'Github' }
       ],
       category: 'Web Applications'
-    },
-    {
-      id: 'carbon-modeling',
-      title: 'Carbon Statistical Modeling',
-      subtitle: 'DISC Agri-AI Challenge',
-      image: '/assets/Carbon.png',
-      techStack: ['Python', 'Scikit-Learn', 'Google Colab'],
-      description: 'Scikit-Learn models trained and tested on agricultural data to over 80% accuracy in predicting carbon fluxes. Ensured data quality despite faulty readings, presented insights to 5+ PhD Scientists.',
-      note: 'Data and results are confidential',
-      links: [
-        { type: 'github', url: 'https://github.com/DrewSkelton', label: 'Github' }
-      ],
-      category: 'Data Science'
     }
   ];
 
