@@ -123,13 +123,15 @@
 @media (max-width: 768px) {
   /* Scale entire carousel down and freeze internal animations */
   .netflix-carousel {
-    transform: scale(0.25);
+    transform: scale(0.5);
     transform-origin: top center;
   }
 
   .carousel-container {
     height: 620px; /* smaller on mobile */
     padding: 20px 0;
+    overflow: visible; /* avoid clipping scaled content */
+    max-width: 2000px; /* wider viewport so more cards are visible when scaled */
   }
 
   .carousel-track {

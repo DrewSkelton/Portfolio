@@ -5,6 +5,16 @@ import NetflixCarousel from './components/NetflixCarousel';
 function App() {
   useEffect(() => {
     const handleScroll = () => {
+      // Disable all parallax effects on mobile for accessibility
+      const isMobile = window.innerWidth <= 768;
+      if (isMobile) {
+        const sections = document.querySelectorAll('.floating-section');
+        sections.forEach((section) => {
+          // Reset transforms so nothing moves
+          section.style.transform = '';
+        });
+        return;
+      }
       const scrolled = window.pageYOffset;
       const aboutSection = document.querySelector('.about-me');
       if (!aboutSection) return;
