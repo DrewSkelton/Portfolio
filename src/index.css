@@ -29,6 +29,25 @@ body {
   padding: 0;
   min-height: 100vh;
   box-sizing: border-box;
+  overflow-x: hidden; /* Ensure body never scrolls horizontally */
+}
+
+/* For Webkit browsers (Chrome, Safari, Opera) */
+::-webkit-scrollbar {
+  display: none;
+}
+
+/* For Firefox */
+html {
+  scrollbar-width: none; /* "none" hides the scrollbar */
+  overflow-x: hidden; /* Disable horizontal scrolling globally */
+  overscroll-behavior-x: contain; /* Prevent horizontal bounce/momentum */
+  touch-action: pan-y; /* Allow only vertical panning */
+}
+
+/* For Internet Explorer and Edge */
+html {
+  -ms-overflow-style: none; /* "none" hides the scrollbar */
 }
 
 code {
@@ -39,4 +58,5 @@ code {
 .app {
   min-height: 100vh;
   background: linear-gradient(180deg, var(--netflix-dark) 0%, #1a1a1a 100%);
+  background: var(--netflix-dark);
 }

@@ -1,7 +1,8 @@
 .netflix-carousel {
   margin: 40px 0;
   padding: 0 20px;
-  
+  margin-top: 250px;  
+  position: relative; /* enable absolute-positioned nav buttons */
 }
 
 .carousel-header {
@@ -47,16 +48,19 @@
 /* Removed disabled state since we're implementing looping */
 
 .carousel-container {
-  overflow-x: auto;
+  overflow-x: hidden; /* Disable native horizontal scrolling */
   overflow-y: hidden;
   scroll-behavior: smooth;
   scrollbar-width: none;
   -ms-overflow-style: none;
-  padding: 10px 0;
+  padding: 50px 0;
   width: 100%;
   max-width: 1150px; /* Increased to accommodate wider cards (3 × 350px + gaps + padding) */
   margin: 0 auto;
-  height: 700px;
+  height: 900px;
+  /* Allow vertical panning (page scroll) but disable native horizontal swipe scrolling */
+  touch-action: pan-y;
+  overscroll-behavior-x: contain; /* Contain horizontal overscroll to prevent momentum */
 }
 
 .carousel-container::-webkit-scrollbar {
@@ -70,6 +74,49 @@
   width: max-content;
   height: 75%;
   margin-top: 20px;
+}
+
+/* Parallax nav buttons (styled like text-cards) */
+.parallax-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 20;
+  cursor: pointer;
+  transition: transform 0.2s ease-out, box-shadow 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 56px;
+  min-height: 56px;
+  user-select: none;
+}
+
+.parallax-nav.left {
+  left: 7%;
+}
+
+.parallax-nav.right {
+  right: 7%;
+}
+
+.parallax-nav .arrow {
+  font-size: 1.6rem;
+  color: var(--netflix-red);
+  text-shadow: 1px 1px 0 rgba(0,0,0,0.3);
+}
+
+/* Slight hover lift to match interactive feel */
+.parallax-nav:hover {
+  transform: translateY(-50%) scale(1.02);
+}
+
+/* Disabled state for left nav at start */
+.parallax-nav.disabled,
+.parallax-nav.disabled .arrow {
+  cursor: not-allowed;
+  filter: grayscale(100%);
+  opacity: 0.5;
 }
 
 .project-card {

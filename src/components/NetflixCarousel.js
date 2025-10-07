@@ -7,6 +7,9 @@ const NetflixCarousel = () => {
   const [displayedProjects, setDisplayedProjects] = useState([]);
   const [middleCardIndex, setMiddleCardIndex] = useState(1); // Track which card should be highlighted as middle
   const carouselRef = useRef(null);
+  const outerRef = useRef(null);
+  const leftNavRef = useRef(null);
+  const rightNavRef = useRef(null);
   const scrollTimeoutRef = useRef(null);
   const touchStartX = useRef(0);
   const touchEndX = useRef(0);
@@ -150,47 +153,33 @@ const NetflixCarousel = () => {
   };
 
   const handleScroll = () => {
-    if (carouselRef.current && !isScrolling) {
-      const cardWidth = 370; // 350px card width + 20px gap
-      const scrollLeft = carouselRef.current.scrollLeft;
-      const newIndex = Math.round(scrollLeft / cardWidth);
-      setCurrentIndex(newIndex);
-      
-      // Calculate which card should be the middle card based on scroll position
-      // The middle card should be the center of the visible 3-card view
-      // Visible cards are: newIndex, newIndex+1, newIndex+2
-      // So the middle card is always newIndex + 1
-      const newMiddleCardIndex = newIndex + 1;
-      setMiddleCardIndex(newMiddleCardIndex);
-      
-      // Check if we're getting close to the end and need to generate more cards
-      const threshold = totalGeneratedCards.current - 4; // Generate more when 4 cards from end
-      if (newIndex >= threshold && newIndex > lastGenerationIndex.current) {
-        const additionalCards = generateInfiniteCards(totalGeneratedCards.current, 21); // Generate 21 more cards (3 complete cycles)
-        setDisplayedProjects(prev => [...prev, ...additionalCards]);
-        totalGeneratedCards.current += 21;
-        lastGenerationIndex.current = newIndex;
+    // Block native x-scroll driven updates; state changes should only come from next/prev
+    if (carouselRef.current) {
+      // Always keep scrollLeft aligned with currentIndex to avoid drift
+      const cardWidth = 370;
+      const targetLeft = currentIndex * cardWidth;
+      if (Math.abs(carouselRef.current.scrollLeft - targetLeft) > 1 && !isScrolling) {
+        carouselRef.current.scrollLeft = targetLeft;
       }
     }
   };
 
   const handleWheel = (e) => {
-    e.preventDefault(); // Prevent default scrolling behavior
-    
-    if (isScrolling) return; // Prevent multiple wheel events during transition
-    
-    const deltaY = e.deltaY;
-    const threshold = 50; // Minimum wheel movement to trigger navigation
-    
-    // Only trigger if wheel movement is significant enough
-    if (Math.abs(deltaY) < threshold) return;
-    
-    if (deltaY > 0) {
-      // Scrolling down/right - go to next
-      nextSlide();
-    } else {
-      // Scrolling up/left - go to previous
-      prevSlide();
+    if (isScrolling) return; // Only one card per gesture
+
+    const { deltaX, deltaY } = e;
+    const absX = Math.abs(deltaX);
+    const absY = Math.abs(deltaY);
+    const threshold = 30; // Minimum horizontal wheel movement to trigger navigation
+
+    // Only intercept when horizontal intent dominates; let vertical scroll pass through
+    if (absX >= threshold) {
+      e.preventDefault(); // Block native horizontal scroll to avoid multi-card drift
+      if (deltaX > 0) {
+        nextSlide();
+      } else if (deltaX < 0) {
+        prevSlide();
+      }
     }
   };
 
@@ -224,11 +213,31 @@ const NetflixCarousel = () => {
       carousel.addEventListener('wheel', handleWheel, { passive: false });
       carousel.addEventListener('touchstart', handleTouchStart, { passive: true });
       carousel.addEventListener('touchend', handleTouchEnd, { passive: true });
+      const handleParallax = () => {
+        if (!outerRef.current || !leftNavRef.current || !rightNavRef.current) return;
+        const rect = outerRef.current.getBoundingClientRect();
+        const viewportCenter = window.innerHeight / 2;
+        const carouselCenter = rect.top + rect.height / 2;
+        const distance = Math.abs(carouselCenter - viewportCenter);
+        const norm = Math.min(distance / window.innerHeight, 1);
+        const offset = Math.round((0.8 + 0.2 * norm) * 64); // 51px..64px - stronger slide effect
+        
+        // Apply stronger slide-in offsets with slower transition
+        leftNavRef.current.style.transition = 'transform 1.2s ease-out';
+        rightNavRef.current.style.transition = 'transform 1.2s ease-out';
+        leftNavRef.current.style.transform = `translateY(-50%) translateX(-${offset}px)`;
+        rightNavRef.current.style.transform = `translateY(-50%) translateX(${offset}px)`;
+      };
+      handleParallax();
+      window.addEventListener('scroll', handleParallax, { passive: true });
+      window.addEventListener('resize', handleParallax, { passive: true });
       return () => {
         carousel.removeEventListener('scroll', handleScroll);
         carousel.removeEventListener('wheel', handleWheel);
         carousel.removeEventListener('touchstart', handleTouchStart);
         carousel.removeEventListener('touchend', handleTouchEnd);
+        window.removeEventListener('scroll', handleParallax);
+        window.removeEventListener('resize', handleParallax);
       };
     }
   }, [isScrolling]);
@@ -261,8 +270,39 @@ const NetflixCarousel = () => {
   };
 
   return (
-    <div className="netflix-carousel">
-        
+    <div className="netflix-carousel" ref={outerRef}>
+      {/* Parallax-style left/right nav buttons styled like text cards */}
+      <div
+        className={`floating-section parallax-nav left text-card ${currentIndex === 0 ? 'disabled' : ''}`}
+        ref={leftNavRef}
+        onClick={currentIndex === 0 ? undefined : prevSlide}
+        aria-label="Previous"
+        aria-disabled={currentIndex === 0}
+      >
+        <span className="arrow">❮</span>
+      </div>
+
+      <div
+        className="floating-section parallax-nav right text-card"
+        ref={rightNavRef}
+        onClick={nextSlide}
+        aria-label="Next"
+      >
+        <span className="arrow">❯</span>
+      </div>
+        <div className="carousel-indicators">
+        {projects.map((_, index) => (
+          <button
+            key={index}
+            className={`indicator ${index === (currentIndex % projects.length) ? 'active' : ''}`}
+            onClick={() => {
+              // Calculate which set of projects to show
+              const targetIndex = Math.floor(currentIndex / projects.length) * projects.length + index;
+              scrollToIndex(targetIndex);
+            }}
+          />
+        ))}
+      </div>
 
       <div className="carousel-container" ref={carouselRef}>
         <div className="carousel-track">
@@ -282,19 +322,7 @@ const NetflixCarousel = () => {
         </div>
       </div>
 
-      <div className="carousel-indicators">
-        {projects.map((_, index) => (
-          <button
-            key={index}
-            className={`indicator ${index === (currentIndex % projects.length) ? 'active' : ''}`}
-            onClick={() => {
-              // Calculate which set of projects to show
-              const targetIndex = Math.floor(currentIndex / projects.length) * projects.length + index;
-              scrollToIndex(targetIndex);
-            }}
-          />
-        ))}
-      </div>
+      
     </div>
   );
 };

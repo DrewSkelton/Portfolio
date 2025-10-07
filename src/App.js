@@ -16,7 +16,7 @@ function App() {
       // Only apply parallax when about section is in view
       if (scrolled > aboutTop - window.innerHeight && scrolled < aboutBottom) {
         const sections = document.querySelectorAll('.floating-section:not(.tech-group)');
-        const scrollSpeeds = [0.2, 0.5, 0.25, 0.10, 0.1]; // Reduced scroll rates for individual sections
+        const scrollSpeeds = [0.3, 0.1, 0.25, 0.10, 0.1]; // Reduced scroll rates for individual sections
         
         // Handle individual sections
         sections.forEach((section, index) => {
@@ -36,7 +36,7 @@ function App() {
         // Handle tech group container
         const techGroup = document.querySelector('.tech-group');
         if (techGroup) {
-          const techSpeed = 0.15; // Very slow parallax for tech group
+          const techSpeed = 0.2; // Very slow parallax for tech group
           const yPos = (scrolled - aboutTop) * techSpeed;
           techGroup.style.transform = `translateX(-50%) translateY(${yPos}px)`;
         }
@@ -79,16 +79,15 @@ function App() {
       </header>
 
       <div className="about-me">
-        <div className="floating-section about-title">About</div>
 
         <div className="floating-section profile-section">
           <div className="image-container">
-            <img src="/assets/Drewga.png" alt="Me" />
+            <img src="/assets/Drewga.png" onClick={() => window.open('https://www.linkedin.com/in/drew-skelton/', '_blank')} alt="Me" />
           </div>
         </div>
 
-          <div className="floating-section achievements-section">
-            <div className="text-card">
+          <div className="achievements-section">
+            <div className="floating-section text-card achievements-section">
             <div className="achievement-item">
                 <i className="fa fa-cloud"></i>
                 <span>AWS Cloud Practitioner</span>
@@ -174,9 +173,9 @@ function App() {
                     <i className="devicon-mongodb-plain colored"></i>
                     <span className="tech-label">MongoDB</span>
                   </div>
-                  <div className="tech-icon" title="TensorFlow">
-                    <i className="devicon-tensorflow-original"></i>
-                    <span className="tech-label">TensorFlow</span>
+                  <div className="tech-icon" title="SQL">
+                  <i class="devicon-azuresqldatabase-plain colored"></i>
+                  <span className="tech-label">SQL</span>
                   </div>
                 </div>
               </div>
