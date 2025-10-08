@@ -35,7 +35,7 @@
 
 .app-header h1 {
   font-size: 3.5rem;
-  font-weight: 350;
+  font-weight: 450;
   margin-bottom: 10px;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
@@ -110,22 +110,20 @@
 .tech-stack-title {
     position: absolute;
   top: -20px;
-  left: 40%;
-  transform: translateX(-50%);
-  color: var(--netflix-red);
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  left: 38.9%;
+  color: var(--netflix-white);
+  text-shadow: 0 2px 4px var(--netflix-red);
   font-size: 2.5rem;
   font-weight: 600;
   margin: 0;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
   z-index: 20;
+
 }
 
 .about-title {
   position: absolute;
   top: -50px;
   left: 46.75%;
-  transform: translateX(-50%);
   color: var(--netflix-red);
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
   font-size: 2.5rem;
@@ -160,12 +158,13 @@
   backdrop-filter: blur(10px);
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
   max-width: 650px;
+
+  
 }
 
 .text-card p {
   font-size: 1rem;
   line-height: 1.6;
-  color: var(--netflix-hover);
   margin: 0;
 }
 
@@ -197,15 +196,18 @@
 
 .achievement-item i {
   font-size: 1.5rem;
-  color: var(--netflix-red);
+  color: var(--netflix-white);
+  text-shadow: 0 4px 8px var(--netflix-red);
+
   min-width: 24px;
 }
 
 .achievement-item span {
   font-size: 1rem;
-  font-weight: 500;
+  font-weight: 400;
   line-height: 1.4;
-  color: var(--netflix-red);
+  text-shadow: 0 2px 4px var(--netflix-red);
+
 
 }
 
@@ -326,8 +328,8 @@
 }
 
 .about-me p:last-of-type {
-  font-weight: 600;
-  color: var(--netflix-red);
+  font-weight: 400;
+  text-shadow: 0 1px 1px var(--netflix-red);
   font-size: 1.2rem;
   margin-top: 25px;
   margin-bottom: 15px;
@@ -345,9 +347,11 @@
 }
 
 .category-title {
-  color: var(--netflix-red);
+  color: var(--netflix-white);
+  text-shadow: 0 2px 2px var(--netflix-red);
+
   font-size: 1.1rem;
-  font-weight: 600;
+  font-weight: 200;
   margin-bottom: 15px;
   text-align: center;
   letter-spacing: 0.5px;
@@ -389,7 +393,7 @@
 
 .tech-label {
   font-size: 0.7rem;
-  color: var(--netflix-light-gray);
+  color: var(--tech-tag);
   font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 0.3px;
@@ -515,7 +519,6 @@
   }
 
   .tech-stack-title {
-    margin-left: 14%; /* Move title more to the right */
   }
 
   .tech-group-container {

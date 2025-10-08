@@ -16,7 +16,7 @@
 .carousel-header h3 {
   font-size: 1.5rem;
   font-weight: 600;
-  color: var(--netflix-red);
+  color: var(--netflix-light-gray);
 }
 
 .carousel-controls {
@@ -359,7 +359,6 @@
   font-size: 1.3rem;
   font-weight: 600;
   color: var(--netflix-white);
-  text-shadow: 1px 1px 1px var(--netflix-red);
   margin-bottom: 5px;
   line-height: 1.3;
 }
@@ -381,7 +380,7 @@
 
 .tech-tag {
   background-color: rgba(229, 9, 20, 0.2);
-  color: var(--netflix-red);
+  color: var(--tech-tag);
   padding: 4px 8px;
   border-radius: 12px;
   font-size: 0.75rem;
@@ -445,19 +444,21 @@
 
 .project-link.github {
   background-color: transparent;
-  color: var(--netflix-red);
-  border: 2px solid var(--netflix-red);
+  color: var(--netflix-white);
+
+  border: 2px solid var(--netflix-white);
 }
 
 .project-link.github:hover {
-  background-color: var(--netflix-red);
+  background-color: var(--netflix-hover);
   color: var(--netflix-dark);
 }
 
 
 
 .project-link.devpost:hover {
-  background-color: #004080;
+  background-color: var(--netflix-light-gray);
+
   transform: translateY(-2px);
 }
 

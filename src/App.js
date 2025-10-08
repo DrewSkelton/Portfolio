@@ -88,7 +88,7 @@ function App() {
       <header className="app-header">
         <div className="header-content">
           <h1>Drew Skelton</h1>
-          <p>Software Developer & AI Engineer</p>
+          <p>Software Developer and AI Engineer</p>
           
 
         </div>

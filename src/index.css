@@ -8,11 +8,12 @@
   --netflix-red: #e50914;
   --netflix-dark: #141414;
   --netflix-gray: #333333;
-  --netflix-light-gray: #666666;
+  --netflix-light-gray: #7f7f7f;
   --netflix-white: #ffffff;
   --netflix-hover: #f3f3f3;
   --shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
   --shadow-hover: 0 8px 30px rgba(0, 0, 0, 0.7);
+  --tech-tag: #ffadb1;
 }
 
 body {
