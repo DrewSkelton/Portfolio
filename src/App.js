@@ -233,11 +233,13 @@ function App() {
 
         <div className="floating-section mission-text">
           <div className="text-card">
-            <p>I enjoy tackling complex problems and building solutions that make a real impact, whether it's creating productivity tools with AI, developing award-winning web applications, or modernizing legacy systems.</p>
+            <p>I enjoy tackling complex problems and building solutions that make a paradigm-shifting impact, whether it's creating productivity tools with AI, developing award-winning web applications, or modernizing legacy systems.</p>
           </div>
         </div> 
       </div>
 
+
+      <div className="floating-section projects-title">Projects</div>
 
       <main className="main-content">
         <NetflixCarousel />

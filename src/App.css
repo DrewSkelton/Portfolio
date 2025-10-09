@@ -120,6 +120,21 @@
 
 }
 
+.projects-title {
+  position: absolute;
+top: 1600px;
+left: 46%;
+color: var(--netflix-white);
+text-shadow: 0 2px 4px var(--netflix-red);
+font-size: 2.5rem;
+font-weight: 600;
+margin: 0;
+z-index: 20;
+
+margin-top: 100px;
+
+}
+
 .about-title {
   position: absolute;
   top: -50px;
@@ -306,7 +321,7 @@
   position: relative;
   z-index: 2;
   overflow: visible;
-  transform: scale(1.1) translateY(-8px) translateX(5px);
+  transform: scale(1.1) translateY(-6px) translateX(12.75px);
 }
 
 .about-me img:hover {

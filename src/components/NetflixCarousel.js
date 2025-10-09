@@ -304,19 +304,7 @@ const NetflixCarousel = () => {
       >
         <span className="arrow">❯</span>
       </div>
-        <div className="carousel-indicators">
-        {projects.map((_, index) => (
-          <button
-            key={index}
-            className={`indicator ${index === (currentIndex % projects.length) ? 'active' : ''}`}
-            onClick={() => {
-              // Calculate which set of projects to show
-              const targetIndex = Math.floor(currentIndex / projects.length) * projects.length + index;
-              scrollToIndex(targetIndex);
-            }}
-          />
-        ))}
-      </div>
+        
 
       <div className="carousel-container" ref={carouselRef}>
         <div className="carousel-track">
@@ -334,6 +322,20 @@ const NetflixCarousel = () => {
             );
           })}
         </div>
+      </div>
+
+      <div className="carousel-indicators">
+        {projects.map((_, index) => (
+          <button
+            key={index}
+            className={`indicator ${index === (currentIndex % projects.length) ? 'active' : ''}`}
+            onClick={() => {
+              // Calculate which set of projects to show
+              const targetIndex = Math.floor(currentIndex / projects.length) * projects.length + index;
+              scrollToIndex(targetIndex);
+            }}
+          />
+        ))}
       </div>
 
       

@@ -470,8 +470,9 @@
   display: flex;
   justify-content: center;
   gap: 8px;
-  margin-top: 30px;
+  margin-top: -170px;
   padding: 0 20px;
+  padding-left: 3%;
 }
 
 .indicator {
@@ -547,7 +548,10 @@
   }
 
   .tech-stack {
-    min-height: 36px; /* Adjusted height for mobile */
+    min-height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Adjusted height for mobile */
   }
 
   .project-description {
