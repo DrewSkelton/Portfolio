@@ -104,19 +104,23 @@ function App() {
 
           <div className="achievements-section">
             <div className="floating-section text-card achievements-section">
-            <div className="achievement-item">
-                <i className="fa fa-cloud"></i>
-                <span>AWS Cloud Practitioner</span>
-              </div>
+            
               <div className="achievement-item">
                 <i className="fa fa-graduation-cap"></i>
-                <span>3.95 GPA</span>
+                <span>3.95 GPA in 3rd Year</span>
               </div>
               <div className="achievement-item">
                 <i className="fa fa-dollar"></i>
-                <span>Saved Filley Lab $2000/yr</span>
+                <span>Saved the Filley Lab $2000/yr</span>
               </div>
-              
+              <div className="achievement-item">
+                <i className="fa fa-trophy"></i>
+                <span>Hacklahoma 2nd place</span>
+              </div>
+              <div className="achievement-item">
+                <i className="fa fa-cloud"></i>
+                <span>AWS Certified Cloud Practitioner</span>
+              </div>
               
             </div>
           </div>
@@ -155,11 +159,11 @@ function App() {
                   </div>
                   <div className="tech-icon" title="HTML5">
                     <i className="devicon-html5-plain colored"></i>
-                    <span className="tech-label">HTML5</span>
+                    <span className="tech-label">HTML</span>
                   </div>
                   <div className="tech-icon" title="CSS3">
                     <i className="devicon-css3-plain colored"></i>
-                    <span className="tech-label">CSS3</span>
+                    <span className="tech-label">CSS</span>
                   </div>
                 </div>
               </div>
