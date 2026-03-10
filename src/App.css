@@ -229,7 +229,7 @@ margin-top: 100px;
 
   /* Achievements Section - Left of Intro */
   .achievements-section {
-    top: 150px;
+    top: 100px;
     left: 27.5%;
     transform: translateZ(0);
     filter: drop-shadow(0 12px 28px rgba(0, 0, 0, 0.35)) 

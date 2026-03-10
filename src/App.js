@@ -107,7 +107,7 @@ function App() {
             
               <div className="achievement-item">
                 <i className="fa fa-graduation-cap"></i>
-                <span>3.95 GPA in 3rd Year</span>
+                <span>3.89 GPA in 3rd Year</span>
               </div>
               <div className="achievement-item">
                 <i className="fa fa-dollar"></i>
@@ -120,6 +120,10 @@ function App() {
               <div className="achievement-item">
                 <i className="fa fa-cloud"></i>
                 <span>AWS Certified Cloud Practitioner</span>
+              </div>
+              <div className="achievement-item">
+                <i className="fa fa-building"></i>
+                <span>American Fidelity Data Engineer Intern</span>
               </div>
               
             </div>
